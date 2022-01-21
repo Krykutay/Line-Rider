@@ -16,6 +16,7 @@ public class LineManager : MonoBehaviour
     List<Vector2> _currentLine;
     LineRenderer _currentLineRenderer;
     EdgeCollider2D _currentLineEdgeCollider;
+    GameObject _currentLineObject;
 
     bool _drawing = false;
     bool _erasing = false;
@@ -73,11 +74,11 @@ public class LineManager : MonoBehaviour
     {
         // Instante the new line
         _currentLine = new List<Vector2>();
-        GameObject currentLineObject = new GameObject();
-        currentLineObject.name = "Line";
-        currentLineObject.transform.parent = transform;
-        _currentLineRenderer = currentLineObject.AddComponent<LineRenderer>();
-        _currentLineEdgeCollider = currentLineObject.AddComponent<EdgeCollider2D>();
+        _currentLineObject = new GameObject();
+        _currentLineObject.name = "Line";
+        _currentLineObject.transform.parent = transform;
+        _currentLineRenderer = _currentLineObject.AddComponent<LineRenderer>();
+        _currentLineEdgeCollider = _currentLineObject.AddComponent<EdgeCollider2D>();
 
         // Set settings
         _currentLineRenderer.positionCount = 0;
@@ -89,7 +90,7 @@ public class LineManager : MonoBehaviour
         _currentLineRenderer.endColor = _lineColor;
         _currentLineEdgeCollider.edgeRadius = 0.1f;
 
-        currentLineObject.layer = 1 << 3;
+        _currentLineObject.layer = 1 << 3;
     }
 
     void AddPoint(Vector2 point)
@@ -115,7 +116,10 @@ public class LineManager : MonoBehaviour
 
     void EndLine()
     {
-        _currentLineEdgeCollider.SetPoints(_currentLine);
+        if (_currentLine.Count == 1)
+            DestroyLine(_currentLineObject);
+        else
+            _currentLineEdgeCollider.SetPoints(_currentLine);
     }
 
     #endregion

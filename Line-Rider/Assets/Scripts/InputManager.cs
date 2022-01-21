@@ -49,9 +49,4 @@ public class InputManager : MonoBehaviour
     {
         return _mouseControls.Mouse.Position.ReadValue<Vector2>();
     }
-
-    void Update()
-    {
-        
-    }
 }
