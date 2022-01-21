@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour
         _mouseControls.Mouse.Erase.started += _ => { if (OnStartErase != null) OnStartErase(); };
         _mouseControls.Mouse.Erase.canceled += _ => { if (OnEndErase != null) OnEndErase(); };
 
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
     }
 
     public float GetZoom()
