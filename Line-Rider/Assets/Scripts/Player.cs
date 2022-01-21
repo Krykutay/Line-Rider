@@ -1,23 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    CameraFollow _cameraFollow;
     InputManager _inputManager;
     Rigidbody2D _rb;
 
     Vector3 _startingPosition;
+    Quaternion _startingRotation;
 
-    bool _playing = false;
+    public bool playing { get; private set; }
 
     void Awake()
     {
+        _cameraFollow = Camera.main.GetComponent<CameraFollow>();
         _rb = GetComponent<Rigidbody2D>();
 
         _startingPosition = transform.position;
+        _startingRotation = transform.rotation;
 
         _inputManager = InputManager.Instance;
+
+        playing = false;
     }
 
     void OnEnable()
@@ -32,20 +36,21 @@ public class Player : MonoBehaviour
 
     void StartGame()
     {
-        _playing = !_playing;
-        if (_playing)
+        playing = !playing;
+        if (playing)
         {
             _rb.bodyType = RigidbodyType2D.Dynamic;
+            _rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+            _cameraFollow.enabled = true;
         }
         else
         {
             _rb.bodyType = RigidbodyType2D.Static;
             transform.position = _startingPosition;
+            transform.rotation = _startingRotation;
+            _cameraFollow.CenterOnTarget();
+            _cameraFollow.enabled = false;
         }
     }
 
-    void Update()
-    {
-        
-    }
 }

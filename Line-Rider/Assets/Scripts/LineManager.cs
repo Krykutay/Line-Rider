@@ -10,7 +10,10 @@ public class LineManager : MonoBehaviour
     [SerializeField] int _lineCapVertices = 5;
     [SerializeField] float _effoctorSpeed = 10f;
     [SerializeField] PhysicsMaterial2D _physicsMaterial2D;
+    [SerializeField] Player _player;
 
+    Pan _panning;
+    Camera _mainCamera;
     InputManager _inputManager;
 
     List<GameObject> _lines;
@@ -22,13 +25,12 @@ public class LineManager : MonoBehaviour
     bool _drawing = false;
     bool _erasing = false;
 
-    Camera _mainCamera;
-
     void Awake()
     {
         _mainCamera = Camera.main;
-
         _inputManager = InputManager.Instance;
+        _panning = GetComponent<Pan>();
+
     }
 
     void OnEnable()
@@ -45,6 +47,14 @@ public class LineManager : MonoBehaviour
         _inputManager.OnEndDraw -= OnEndDraw;
         _inputManager.OnStartErase -= OnStartErase;
         _inputManager.OnEndErase -= OnEndErase;
+    }
+
+    void Update()
+    {
+        if (!_player.playing)
+        {
+            _panning.PanScreen(GetCurrentScreenPoint());
+        }
     }
 
     #region Drawing
