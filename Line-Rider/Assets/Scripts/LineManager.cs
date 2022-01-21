@@ -143,6 +143,8 @@ public class LineManager : MonoBehaviour
 
     #endregion
 
+    #region Erasing
+
     void OnStartErase()
     {
         if (!_drawing)
@@ -171,6 +173,8 @@ public class LineManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    #endregion
 
 
     Vector2 GetCurrentScreenPoint()
