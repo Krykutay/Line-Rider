@@ -47,7 +47,7 @@ public class @MouseControls : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""8be3df64-e933-4273-b38e-9325385978ba"",
                     ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
+                    ""processors"": ""Invert"",
                     ""interactions"": """"
                 }
             ],

@@ -13,6 +13,7 @@ public class LineManager : MonoBehaviour
     [SerializeField] Player _player;
 
     Pan _panning;
+    Zoom _zoom;
     Camera _mainCamera;
     InputManager _inputManager;
 
@@ -30,6 +31,7 @@ public class LineManager : MonoBehaviour
         _mainCamera = Camera.main;
         _inputManager = InputManager.Instance;
         _panning = GetComponent<Pan>();
+        _zoom = GetComponent<Zoom>();
 
     }
 
@@ -54,6 +56,7 @@ public class LineManager : MonoBehaviour
         if (!_player.playing)
         {
             _panning.PanScreen(GetCurrentScreenPoint());
+            _zoom.ZoomScreen(GetZoomValue());
         }
     }
 
@@ -178,5 +181,10 @@ public class LineManager : MonoBehaviour
     Vector2 GetCurrentWorldPoint()
     {
         return _mainCamera.ScreenToWorldPoint(_inputManager.GetMousePosition());
+    }
+
+    float GetZoomValue()
+    {
+        return _inputManager.GetZoom();
     }
 }

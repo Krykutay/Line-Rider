@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 575026777}
   - component: {fileID: 575026776}
   - component: {fileID: 575026779}
+  - component: {fileID: 575026780}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -259,7 +260,7 @@ MonoBehaviour:
   _lineCapVertices: 5
   _effoctorSpeed: 8
   _physicsMaterial2D: {fileID: 6200000, guid: 9e00b19de864c0a45a4b79076adb2917, type: 2}
-  _player: {fileID: 0}
+  _player: {fileID: 1492267530}
 --- !u!114 &575026777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +300,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panSpeed: 2
+--- !u!114 &575026780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575026775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29e1c80ea4887b4fa6a18c55306cb8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoomSpeed: 4
+  _minZoom: 1
+  _maxZoom: 15
 --- !u!1 &1492267525
 GameObject:
   m_ObjectHideFlags: 0
