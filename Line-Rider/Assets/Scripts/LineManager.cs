@@ -8,8 +8,8 @@ public class LineManager : MonoBehaviour
     [SerializeField] float _lineWidth = 0.08f;
     [SerializeField] Color _lineColor = Color.black;
     [SerializeField] int _lineCapVertices = 5;
-    [SerializeField] PhysicsMaterial2D _physicsMaterial2D;
     [SerializeField] float _effoctorSpeed = 10f;
+    [SerializeField] PhysicsMaterial2D _physicsMaterial2D;
 
     InputManager _inputManager;
 
