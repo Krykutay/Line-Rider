@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    PlayerControls _playerControls;
+    InputManager _inputManager;
     Rigidbody2D _rb;
 
     Vector3 _startingPosition;
@@ -13,25 +13,21 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
-        _playerControls = new PlayerControls();
         _rb = GetComponent<Rigidbody2D>();
 
         _startingPosition = transform.position;
+
+        _inputManager = InputManager.Instance;
     }
 
     void OnEnable()
     {
-        _playerControls.Enable();
+        _inputManager.OnPressPlay += StartGame;
     }
 
     void OnDisable()
     {
-        _playerControls.Disable();
-    }
-
-    void Start()
-    {
-        _playerControls.Player.Space.performed += _ => StartGame();
+        _inputManager.OnPressPlay -= StartGame;
     }
 
     void StartGame()

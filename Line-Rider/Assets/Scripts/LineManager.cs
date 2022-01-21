@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(InputManager))]
 public class LineManager : MonoBehaviour
 {
     [SerializeField] float _lineSeparationDistance = 0.2f;
     [SerializeField] float _lineWidth = 0.08f;
     [SerializeField] Color _lineColor = Color.black;
     [SerializeField] int _lineCapVertices = 5;
+    [SerializeField] PhysicsMaterial2D _physicsMaterial2D;
+    [SerializeField] float _effoctorSpeed = 10f;
 
     InputManager _inputManager;
 
@@ -25,8 +26,9 @@ public class LineManager : MonoBehaviour
 
     void Awake()
     {
-        _inputManager = GetComponent<InputManager>();
         _mainCamera = Camera.main;
+
+        _inputManager = InputManager.Instance;
     }
 
     void OnEnable()
@@ -79,6 +81,7 @@ public class LineManager : MonoBehaviour
         _currentLineObject.transform.parent = transform;
         _currentLineRenderer = _currentLineObject.AddComponent<LineRenderer>();
         _currentLineEdgeCollider = _currentLineObject.AddComponent<EdgeCollider2D>();
+        SurfaceEffector2D currentEffector = _currentLineObject.AddComponent<SurfaceEffector2D>();
 
         // Set settings
         _currentLineRenderer.positionCount = 0;
@@ -89,6 +92,9 @@ public class LineManager : MonoBehaviour
         _currentLineRenderer.startColor = _lineColor;
         _currentLineRenderer.endColor = _lineColor;
         _currentLineEdgeCollider.edgeRadius = 0.1f;
+        _currentLineEdgeCollider.sharedMaterial = _physicsMaterial2D;
+        _currentLineEdgeCollider.usedByEffector = true;
+        currentEffector.speed = _effoctorSpeed;
 
         _currentLineObject.layer = 1 << 3;
     }
