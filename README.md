@@ -11,7 +11,7 @@ Anyway, Let's move to the technical details now! <br/>
 
 # Technical Aspects
 
-In this game, the player is controlled by 2 managers, Input Manager and Line Manager. <br/>
+In this game, the game managing part is controlled by 2 managers, Input Manager and Line Manager. <br/>
 + Input Manager, simply uses Unity's new input system and manages all the player inputs, either to control the game itself or the character. Since it's using the new input system, everything is event based. Line Manager and Player script is listening the events that they subscribed, and as soon as an input is given, they do receive their end of deal and do the action. <br/>
 
 + Line Manager, simply responsible for starting to drawing a line, ending it as well as erasing a line. It basically creates an object with line renderer and edge collider whenever the player tries to draw a line with mouse actions. 
