@@ -6,7 +6,7 @@ I've just made a replica of what the game used to be, and adjusted its physics u
 
 ![LineRiderSS1](https://user-images.githubusercontent.com/44427408/150669104-6886a2f6-b4c9-453d-bf43-5ff401fbe803.jpg)
 
-So, what is this game? How to play it, what is the purpose even, you may ask. In a nutshell, There is an amazingly drawn character with his/her(?) ice sled, and that thing literally slides on the lines that the player draws. The position, rational, angles and such do affect the cool riding dude's speed and such. Draw a horribly misarable line, and your character may just hit his/her head into the line and suffer the consequences. <br/)
+So, what is this game? How to play it, what is the purpose even, you may ask. In a nutshell, There is an amazingly drawn character with his/her(?) ice sled, and that thing literally slides on the lines that the player draws. The position, rational, angles and such do affect the cool riding dude's speed and such. Draw a horribly misarable line, and your character may just hit his/her head into the line and suffer the consequences. <br/>
 Anyway, Let's move to the technical details now! <br/>
 
 # Technical Aspects
